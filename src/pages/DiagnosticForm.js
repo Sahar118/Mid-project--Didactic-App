@@ -3,7 +3,7 @@ import { Form, Row, Col, message } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
-import { AddDiagnosic, GetDiagnosicById } from '../apicalls/Diagnosic'
+import { AddDiagnosic, checkIfDigAccountIsApplied, GetDiagnosicById } from '../apicalls/Diagnosic'
 import { showLoader } from '../redux/loaderSlice'
 
 const DiagnosticForm = () => {
@@ -38,7 +38,7 @@ const DiagnosticForm = () => {
     const checkIfAlreadyApplied = async (values) => {
         try {
             dispatch(showLoader(true))
-            const response = await GetDiagnosicById(JSON.parse(localStorage.getItem("user")).id)
+            const response = await checkIfDigAccountIsApplied(JSON.parse(localStorage.getItem("user")).id)
             if (response.success) {
                 setAlreadyApplied(true)
             }
@@ -289,7 +289,7 @@ const DiagnosticForm = () => {
             </>)}
             {alreadyApplied &&
                 <div className='flex flex-col items-center gap-2'>
-                    <h3 className='text-2xl'>כבר הגשת מועמדות לגישה לאיזור המאבחנים הדידקטיים
+                    <h3 className='text-2xl'>כבר הגשת בקשה לגישה לאיזור המאבחנים הדידקטיים
                         נא להמתן עד שהמנהל יאשר את בקשתך
                     </h3>
                 </div>

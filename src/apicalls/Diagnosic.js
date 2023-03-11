@@ -1,12 +1,12 @@
 
 import { async } from '@firebase/util';
-import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore'
 import firestoreDatabase from "../firebaseConfig";
 
 
 export const AddDiagnosic = async (payload) => {
     try {
-        await addDoc(collection(firestoreDatabase, "diagnosic"), payload)
+        await setDoc(doc(firestoreDatabase, "diagnosic", payload.userId), payload)
         return {
             success: true,
             message: "המאבחן נוסף בהצלחה, חכה לאישור",
@@ -21,21 +21,46 @@ export const AddDiagnosic = async (payload) => {
     }
 }
 
-export const GetDiagnosicById = async (id) => {
+
+export const checkIfDigAccountIsApplied = async (id) => {
     try {
-        const Diagnosic = await getDoc(doc(firestoreDatabase, "diagnosic", id))
-        if (!Diagnosic.exists()) {
-            throw new Error('מאבחן לא נמצא')
+        const dignosic = await getDocs(
+            query(collection(firestoreDatabase, "diagnosic"), where("userId", "==", id))
+        )
+        if (dignosic.size > 0) {
+            return {
+                success: true,
+                message: "החשבון אושר"
+            }
         }
         return {
-            success: true,
-            data: Diagnosic.data()
+            success: false,
+            message: 'החשבון שלא אושר'
         }
     } catch (error) {
         return {
             success: false,
             message: error.message,
         }
-
     }
+}
+
+export const getAllDiagnosic = async () => {
+    try {
+        const dignosic = await getDocs(collection(firestoreDatabase, "diagnosic"))
+        return {
+            success: true,
+            data: dignosic.docs.map(() => {
+                id: doc.id,
+                ...doc.data()
+            }),
+    }
+
+    } catch (error) {
+    return {
+        success: false,
+        message: error.message,
+    }
+
+}
 }
