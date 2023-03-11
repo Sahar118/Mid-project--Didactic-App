@@ -50,17 +50,19 @@ export const getAllDiagnosic = async () => {
         const dignosic = await getDocs(collection(firestoreDatabase, "diagnosic"))
         return {
             success: true,
-            data: dignosic.docs.map(() => {
-                id: doc.id,
-                ...doc.data()
+            data: dignosic.docs.map((doc) => {
+                return {
+                    ...doc.data(),
+                    id: doc.id
+                }
             }),
-    }
+        }
 
     } catch (error) {
-    return {
-        success: false,
-        message: error.message,
-    }
+        return {
+            success: false,
+            message: error.message,
+        }
 
-}
+    }
 }
