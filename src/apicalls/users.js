@@ -45,6 +45,7 @@ export const LoginUser = async (payload) => {
         }
 
         const user = userSnapshot.docs[0].data()
+        user.id = userSnapshot.docs[0].id
         const bytes = CryptoJS.AES.decrypt(user.password, "Didactic-App")
         const originalPassword = bytes.toString(CryptoJS.enc.Utf8)
 
