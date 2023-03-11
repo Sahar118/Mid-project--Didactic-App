@@ -63,7 +63,7 @@ const Login = () => {
                     <input type='password' />
                 </Form.Item>
 
-                <button className='contained-btn my-1 bg-primary' type='submit'>התחבר</button>
+                <button className='contained-btn my-1 bg-primary w-full' type='submit'>התחבר</button>
 
                 <Link to='/register' className='underline'>
                     <strong>  משתמש חדש? </strong>לחץ כאן
