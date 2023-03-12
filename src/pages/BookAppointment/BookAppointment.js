@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router'
 import { showLoader } from '../../redux/loaderSlice';
 import { GetDiagnosicById } from '../../apicalls/Diagnosic'
+import moment from 'moment/moment';
 
 const BookAppointment = () => {
     const [date, setDate] = useState("")
@@ -29,11 +30,13 @@ const BookAppointment = () => {
     };
 
     const getSlotsData = () => {
-        return
-        <>
-
-        </>
-
+        const day = moment(date).format("dddd");
+        if (!diagnostic.days.includes(day)) {
+            return (
+                <h3> המאבחן אינו פנוי ב {moment(date).format("DD-MM-YYYY")} </h3>
+            )
+        }
+        return (<>{day}</>)
     }
 
     useEffect(() => {
@@ -83,11 +86,16 @@ const BookAppointment = () => {
                     <div className="flex gap-2 w-400 items-end">
                         <div>
                             <span>נא לבחור תאריך  </span>
-                            <input type='date' value={date} onChange={(e) => setDate(e.target.value)} />
+                            <input
+                                type='date'
+                                value={date}
+                                onChange={(e) => setDate(e.target.value)}
+                                min={moment().format("YYYY-MM-DD")}
+                            />
                         </div>
                         <button className='outlined-btn'>חפש </button>
                     </div>
-                    {getSlotsData()}
+                    {date && getSlotsData()}
 
                 </div>
             </div>

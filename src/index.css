@@ -55,6 +55,9 @@ h1, h2, h3, h4, h5, h6, a, span, p{
   width: 400px;
 }
 
+.w-half{
+  width: 50%;
+}
 .p-1{
   padding: 10px;
 }
