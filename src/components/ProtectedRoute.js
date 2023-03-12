@@ -8,26 +8,28 @@ import { showLoader } from '../redux/loaderSlice';
 import { GetUserById } from '../apicalls/users';
 import { message } from 'antd';
 import { Link } from 'react-router-dom';
+import DiagnosticNav from './DiagnosticNav';
 
 
 const ProtectedRoute = ({ children }) => {
     const user = JSON.parse(localStorage.getItem('user'))
     const [isAdmin, setIsAdmin] = useState(false);
+    const [isDiagnosic, setIsDiagnosic] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
 
 
-    const checkIsAdmin = async () => {
+    const checkTypeOfUser = async () => {
         try {
             dispatch(showLoader(true));
             const response = await GetUserById(user.id)
             dispatch(showLoader(false));
             if (response.success && response.data.role === "admin") {
                 setIsAdmin(true)
-                console.log(isAdmin)
-            } else {
-                throw new Error(' משתמש לא מורשה')
+            }
+            if (response.success && response.data.role === "diagnosic") {
+                setIsDiagnosic(true)
             }
 
         } catch (error) {
@@ -36,7 +38,7 @@ const ProtectedRoute = ({ children }) => {
         }
     }
     useEffect(() => {
-        checkIsAdmin();
+        checkTypeOfUser();
         // if (!user || user.role !== "admin") {
         //     window.location.href = '/';
         // }
@@ -52,45 +54,47 @@ const ProtectedRoute = ({ children }) => {
     }, [])
 
     return (
-        <div className='layout p-1'>
-            <div className="header bg-white p-2 flex justify-between items-center">
+        <>
+            <div className='layout p-1'>
+                <div className="header bg-white p-2 flex justify-between items-center">
 
-                <h3
-                    className='cursor-pointer logo-p'
-                    onClick={() => navigate('/')}>
-                    <img src={logo} className='logo' />
-                    המדריך למאבחנים דידקטיים
-                </h3>
+                    <h3
+                        className='cursor-pointer logo-p'
+                        onClick={() => navigate('/')}>
+                        <img src={logo} className='logo' />
+                        המדריך למאבחנים דידקטיים
+                    </h3>
 
-                {user && (
-                    <div className='flex gap-1 items-center'>
-                        <AiOutlineUser />
+                    {user && (
+                        <div className='flex gap-1 items-center'>
+                            <AiOutlineUser />
 
-                        <h4
-                            className='cursor-pointer underline'
-                            onClick={() => navigate('/profile')}
-                        >  שלום {user.name}</h4>
+                            <h4
+                                className='cursor-pointer underline'
+                                onClick={() => navigate('/profile')}
+                            >  שלום {user.name}</h4>
+                        </div>
+                    )}
+                    {isAdmin &&
+                        <Link to='/admin'>
+                            <button>מעבר לדף ניהול משתמשים</button>
+                        </Link>
+                    }
+                    <div
+                        className='cursor-pointer'
+                        onClick={() => {
+                            localStorage.removeItem('user')
+                            navigate('/login')
+                        }}>
+                        <RiLogoutBoxLine />
                     </div>
-                )}
-                {isAdmin &&
-                    <Link to='/admin'>
-                        <button>מעבר לדף ניהול משתמשים</button>
-                    </Link>
-                }
-                <div
-                    className='cursor-pointer'
-                    onClick={() => {
-                        localStorage.removeItem('user')
-                        navigate('/login')
-                    }}>
-                    <RiLogoutBoxLine />
                 </div>
-
-
-
+                {isDiagnosic || isAdmin ? <DiagnosticNav /> : null
+                }
+                <div className="content my-1 bg-white">{children} </div>
             </div>
-            <div className="content my-1 bg-white">{children} </div>
-        </div>
+        </>
+
     )
 }
 

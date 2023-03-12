@@ -36,6 +36,7 @@ const Home = () => {
     const navigate = useNavigate()
     return (
         <div>
+
             <div className="flex justify-between">
                 <div>
                     <input placeholder='חפש מאבחן דידקטי' className='w-400 my-1'></input>
