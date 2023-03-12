@@ -138,7 +138,9 @@ textarea{
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 4px;
-
+}
+.btn-book{
+  width: 135px;
 }
 
 .contained-btn:hover{

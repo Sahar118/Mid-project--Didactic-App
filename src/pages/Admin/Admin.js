@@ -9,8 +9,8 @@ import UsersList from './UsersList'
 
 const Admin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
-    const user = JSON.parse(localStorage.getItem("user"));
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem("user"));
 
 
     const checkIsAdmin = async () => {
