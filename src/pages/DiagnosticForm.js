@@ -12,6 +12,8 @@ const DiagnosticForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
     const onFinish = async (values) => {
         try {
             dispatch(showLoader(true))
@@ -261,7 +263,7 @@ const DiagnosticForm = () => {
 
                         <Col span={24}>
                             <div className='flex gap-2'>
-                                {['ראשון', "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"].map((day, index) => (
+                                {weekDays.map((day, index) => (
                                     <div className='flex items-center'>
                                         <input
                                             type='checkbox'

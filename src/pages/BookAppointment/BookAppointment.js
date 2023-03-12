@@ -1,3 +1,4 @@
+
 import { async } from '@firebase/util';
 import { message } from 'antd';
 import React, { useState, useEffect } from 'react'
@@ -36,13 +37,12 @@ const BookAppointment = () => {
                 <h3> המאבחן אינו פנוי ב {moment(date).format("DD-MM-YYYY")} </h3>
             )
         }
-        return (<>{day}</>)
+        return <>{day}</>
     }
 
     useEffect(() => {
         getData()
     }, [id])
-
     return (
         diagnostic && (
             <div className='bg-white p-2 my-1'>
@@ -100,7 +100,9 @@ const BookAppointment = () => {
                         </div>
                         <button className='outlined-btn'>חפש </button>
                     </div>
-                    {date && getSlotsData()}
+                    <div className='flex gap-2'>
+                        {date && getSlotsData()}
+                    </div>
 
                 </div>
             </div>
