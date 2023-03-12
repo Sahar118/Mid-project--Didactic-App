@@ -78,6 +78,11 @@ const BookAppointment = () => {
                         <h3><b> מחיר עבור אבחון </b></h3>
                         <h3> {diagnostic.fee} ש"ח</h3>
                     </div>
+
+                    <div className="flex justify-between w-full book-info">
+                        <h3><b>בחר תאריך:  </b></h3>
+                        <h3> {diagnostic.days.join(" , ")} </h3>
+                    </div>
                 </div>
                 <hr />
 
