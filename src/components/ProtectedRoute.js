@@ -39,18 +39,16 @@ const ProtectedRoute = ({ children }) => {
     }
     useEffect(() => {
         checkTypeOfUser();
-        // if (!user || user.role !== "admin") {
-        //     window.location.href = '/';
-        // }
+        //eslint-disable-next-line
     }, [])
 
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
-
         if (!user) {
             navigate('/login')
         }
+        //eslint-disable-next-line
     }, [])
 
     return (
@@ -61,7 +59,7 @@ const ProtectedRoute = ({ children }) => {
                     <h3
                         className='cursor-pointer logo-p'
                         onClick={() => navigate('/')}>
-                        <img src={logo} className='logo' />
+                        <img src={logo} className='logo' alt='logo' />
                         המדריך למאבחנים דידקטיים
                     </h3>
 

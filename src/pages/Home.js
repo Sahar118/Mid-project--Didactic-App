@@ -1,4 +1,3 @@
-import { async } from '@firebase/util'
 import { Col, message, Row } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
@@ -31,6 +30,7 @@ const Home = () => {
 
     useEffect(() => {
         getData()
+        //eslint-disable-next-line
     }, []);
 
     const navigate = useNavigate()

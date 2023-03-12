@@ -15,10 +15,6 @@ const GlossaryComponent = () => {
         loadTerms()
     }, [])
 
-    // const onSuggestHandler = (text) => {
-    //     setText(text);
-    //     setSuggestions([])
-    // }
     const onChangeHandler = (text) => {
         let matches = []
         if (text.length > 0) {
