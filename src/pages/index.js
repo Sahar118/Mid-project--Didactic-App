@@ -5,7 +5,11 @@ import Profile from "./Profile/Profile";
 import DiagnosticForm from "./DiagnosticForm";
 import Admin from "./Admin/Admin";
 import BookAppointment from "./BookAppointment/BookAppointment";
-
+import NewDiagnosis from "./DiagnosicPages/NewDiagnosis";
+import ConcludingParagraphs from './DiagnosicPages/ConcludingParagraphs'
+import EditParagraphs from './DiagnosicPages/EditParagraphs'
+import DiagnosticHistory from './DiagnosicPages/DiagnosticHistory'
+import Glossary from './DiagnosicPages/Glossary'
 export {
     Login,
     Register,
@@ -13,5 +17,10 @@ export {
     Profile,
     DiagnosticForm,
     Admin,
-    BookAppointment
+    BookAppointment,
+    NewDiagnosis,
+    ConcludingParagraphs,
+    EditParagraphs,
+    DiagnosticHistory,
+    Glossary
 }
