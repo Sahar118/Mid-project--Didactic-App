@@ -51,7 +51,7 @@ const Home = () => {
                 className='my-1'
             >
                 {diagnosics.map((diagnosics) => {
-                    return <Col span={8}>
+                    return <Col key={Math.random()} span={8}>
                         <div className='bg-white p-1 flex flex-col gap-1 cursor-pointer'
                             onClick={() => navigate(`/book-appointment/${diagnosics.id}`)}
                         >

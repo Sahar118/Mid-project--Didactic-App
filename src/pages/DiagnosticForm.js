@@ -1,9 +1,9 @@
-import { async } from '@firebase/util'
+
 import { Form, Row, Col, message } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
-import { AddDiagnosic, checkIfDigAccountIsApplied, GetDiagnosicById } from '../apicalls/Diagnosic'
+import { AddDiagnosic, checkIfDigAccountIsApplied} from '../apicalls/Diagnosic'
 import { showLoader } from '../redux/loaderSlice'
 
 const DiagnosticForm = () => {
@@ -54,6 +54,7 @@ const DiagnosticForm = () => {
     }
     useEffect(() => {
         checkIfAlreadyApplied()
+        //eslint-disable-next-line
     }, []);
 
     return (
@@ -264,7 +265,7 @@ const DiagnosticForm = () => {
                         <Col span={24}>
                             <div className='flex gap-2'>
                                 {weekDays.map((day, index) => (
-                                    <div className='flex items-center'>
+                                    <div key={Math.random()} className='flex items-center'>
                                         <input
                                             type='checkbox'
                                             key={index}
