@@ -1,12 +1,16 @@
 
 import { async } from '@firebase/util';
-import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import firestoreDatabase from "../firebaseConfig";
 
 
 export const AddDiagnosic = async (payload) => {
     try {
         await setDoc(doc(firestoreDatabase, "diagnosic", payload.userId), payload)
+
+        await updateDoc(doc(firestoreDatabase, 'users', payload.userId), {
+            role: "diagnosic",
+        })
         return {
             success: true,
             message: "המאבחן נוסף בהצלחה, חכה לאישור",
@@ -64,5 +68,20 @@ export const getAllDiagnosic = async () => {
             message: error.message,
         }
 
+    }
+}
+
+export const UpdateDiacnosic = async (payload) => {
+    try {
+        await setDoc(doc(firestoreDatabase, "diagnosic", payload.id), payload);
+        return {
+            success: true,
+            message: " עודכן בהצלחה",
+        };
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message,
+        }
     }
 }

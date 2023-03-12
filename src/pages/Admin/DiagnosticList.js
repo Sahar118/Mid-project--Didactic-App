@@ -1,7 +1,8 @@
+import { async } from '@firebase/util'
 import { message, Table } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getAllDiagnosic } from '../../apicalls/Diagnosic'
+import { getAllDiagnosic, UpdateDiacnosic } from '../../apicalls/Diagnosic'
 import { showLoader } from '../../redux/loaderSlice'
 
 const DiagnosticList = () => {
@@ -22,6 +23,24 @@ const DiagnosticList = () => {
         } catch (error) {
             dispatch(showLoader(false))
             message.error(error.message)
+        }
+    }
+
+
+
+    const changeStatus = async (payload) => {
+        try {
+            dispatch(showLoader(true));
+            const response = await UpdateDiacnosic(payload);
+            dispatch(showLoader(false));
+            if (response.success) {
+                message.success(response.message);
+                getData();
+            } else {
+                throw new Error(response.message)
+            }
+        } catch (error) {
+
         }
     }
 
@@ -51,6 +70,59 @@ const DiagnosticList = () => {
             title: "סטטוס",
             dataIndex: 'status'
         },
+        {
+            title: "פעולות",
+            dataIndex: 'actions',
+            render: (text, record) => {
+                if (record.status === 'pending') {
+                    return (
+                        < div className='flex gap-1' >
+                            <span className='underline cursor-pointer'
+                                onClick={() => changeStatus({
+                                    ...record,
+                                    status: "rejected",
+                                })}
+
+                            > לדחות</span>
+
+                            <span className='underline cursor-pointer'
+                                onClick={() => changeStatus({
+                                    ...record,
+                                    status: "approved",
+                                })}
+                            >לאשר </span>
+                        </div >
+                    );
+                }
+                if (record.status === 'approved') {
+                    return (
+                        < div className='flex gap-1' >
+                            <span className='underline cursor-pointer'
+                                onClick={() => changeStatus({
+                                    ...record,
+                                    status: "blocked",
+                                })}
+                            > לחסום</span>
+                        </div >
+                    )
+                }
+
+                if (record.status === 'blocked') {
+                    return (
+                        < div className='flex gap-1' >
+                            <span className='underline cursor-pointer'
+
+                                onClick={() => changeStatus({
+                                    ...record,
+                                    status: "unblocked",
+                                })}> בטל חסימה</span>
+                        </div >
+                    )
+                }
+
+            }
+        }
+
 
     ]
     return (
