@@ -44,6 +44,9 @@ h1, h2, h3, h4, h5, h6, a, span, p{
   align-items: center;
 }
 
+.items-end{
+  align-items: flex-end;
+}
 .h-screen{
   height: 100vh;
 }
@@ -256,3 +259,5 @@ input{
     padding: 0 40px;
     margin: 10px;
   }
+
+
