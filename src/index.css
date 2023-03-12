@@ -19,13 +19,14 @@ h1, h2, h3, h4, h5, h6, a, span, p{
   background-color: #fff;
   border-radius: 2px !important;
   border: 1px solid #d3d2d2;
+  box-shadow: 0 0 3px 0 #d3d2d2;
 }
 
 .flex{
   display: flex;
 }
 
-.flex-column {
+.flex-col {
   flex-direction: column;
 }
 
@@ -49,7 +50,6 @@ h1, h2, h3, h4, h5, h6, a, span, p{
 
 .w-400{
   width: 400px;
-  
 }
 
 .p-1{
@@ -92,6 +92,8 @@ h1, h2, h3, h4, h5, h6, a, span, p{
 .my-1{
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 5px;
+  /* margin: 10px; */
 }
 
 .my-2{
@@ -109,6 +111,8 @@ input, textarea, select{
   width: 100%;
   padding-left: 15px;
   width: 100%;
+  border-radius: 4px;
+
 }
 
 input:focus, textarea, select{
@@ -122,12 +126,13 @@ textarea{
 }
 
 .contained-btn{
-  height: 45px !important;
-  border-radius: 0 !important;
+  height: 45px ;
   background-color: black ;
   color: white ;
   text-transform: uppercase;
   cursor: pointer;
+  border-radius: 4px;
+
 }
 
 .contained-btn:hover{
@@ -136,8 +141,7 @@ textarea{
 }
 
 .outlined-btn{
-  height: 45px !important;  
-  border-radius: 0 !important;
+  height: 45px ;  
   background-color:white;
   color:   black ;
   text-transform: uppercase;
@@ -145,6 +149,8 @@ textarea{
   cursor: pointer;
   padding: 0 20px;
   font-weight: 900;
+  border-radius: 4px;
+
 }
 .outlined-btn:hover{
   color: white;
@@ -179,10 +185,16 @@ input{
   margin-bottom: 8px !important;
 }
 
-.gap-2{
- margin-right: 10px;
+.gap-1{
+ gap:10px;
 }
 
+.gap-2{
+  gap:20px;
+ }
+ .gap-3{
+  gap:30px;
+ }
 
 .text-primary{
   color: #0b620b;

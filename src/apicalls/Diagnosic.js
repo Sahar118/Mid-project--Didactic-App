@@ -85,3 +85,19 @@ export const UpdateDiacnosic = async (payload) => {
         }
     }
 }
+
+export const GetDiagnosicById = async (id) => {
+    try {
+        const diagnosic = await getDoc(doc(firestoreDatabase, "diagnosic", id));
+        return {
+            success: true,
+            data: diagnosic.data()
+        };
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message,
+        };
+
+    }
+}

@@ -4,7 +4,7 @@ import Home from "./Home";
 import Profile from "./Profile";
 import DiagnosticForm from "./DiagnosticForm";
 import Admin from "./Admin/Admin";
-
+import BookAppointment from "./BookAppointment/BookAppointment";
 
 export {
     Login,
@@ -12,5 +12,6 @@ export {
     Home,
     Profile,
     DiagnosticForm,
-    Admin
+    Admin,
+    BookAppointment
 }

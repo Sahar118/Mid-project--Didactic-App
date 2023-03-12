@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Home, Login, Register, Profile, DiagnosticForm, Admin } from './pages';
+import { Home, Login, Register, Profile, DiagnosticForm, Admin, BookAppointment } from './pages';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Spinner } from './components/Spinner';
 import { useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path='/book-appointment/:id' element={<ProtectedRoute><BookAppointment /></ProtectedRoute>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/profile' element={<ProtectedRoute><Profile /> </ProtectedRoute>} />
