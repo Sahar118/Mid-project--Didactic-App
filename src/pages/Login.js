@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { async } from '@firebase/util';
 import { Form, message } from 'antd'
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../apicalls/users';
@@ -37,6 +36,7 @@ const Login = () => {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
         if (user) navigate("/");
+        //eslint-disable-next-line
     }, [])
 
     return (

@@ -1,5 +1,4 @@
 
-import { async } from '@firebase/util';
 import { message } from 'antd';
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
@@ -90,7 +89,10 @@ const BookAppointment = () => {
     //         dispatch(showLoader(false))
     //     }
     // }
-    useEffect(() => { getData() }, [id])
+    useEffect(() => {
+        getData()
+        //eslint-disable-next-line
+    }, [id])
     return (
         diagnostic && (
             <div className='bg-white p-2 my-1'>

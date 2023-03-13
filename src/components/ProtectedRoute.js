@@ -75,7 +75,7 @@ const ProtectedRoute = ({ children }) => {
                     )}
                     {isAdmin &&
                         <Link to='/admin'>
-                            <button>מעבר לדף ניהול משתמשים</button>
+                            <button className='cursor-pointer btn'>מעבר לדף ניהול משתמשים</button>
                         </Link>
                     }
                     <div
@@ -89,7 +89,34 @@ const ProtectedRoute = ({ children }) => {
                 </div>
                 {isDiagnosic || isAdmin ? <DiagnosticNav /> : null
                 }
-                <div className="content my-1 bg-white">{children} </div>
+
+                {!isDiagnosic &&
+                    <div className='layout p-1 bg-white para'>
+                        <h2> ברוכים הבאים :  </h2>
+                        <h3> להלן הסבר על איך לתפעל את האתר:</h3>
+                        <p>
+                            <ul>
+                                <li> קהל היעד הורים ומאבחנים דידקטיים </li>
+                                <li> אם הינך הורה, ניתן לחפש מאבחן דידקטי ללחוץ על השם שלו על מנת לצפות בכרטיס הביקור שלו </li>
+                                <li> אם הינך מאבחן דידקטי, ומעוניין בגישה לאיזור של המאבחנים הדידקטיים, <br></br>
+                                    <span> המאפשר לך:</span>
+                                    <li>
+                                        כתיבת דוח אבחון חדש
+                                    </li>
+                                    <li> צפיה בהסטורית האבחונים שנעשו</li>
+                                    <li>  חישוב ציוני תקן אוטומטי בעת הזנת ציוני גלם </li>
+                                    <li>  מילון מושגים  </li>
+
+
+                                </li>
+
+                            </ul>
+
+                        </p>
+
+                    </div>
+                }
+                <div className="content my-1">{children} </div>
             </div>
         </>
 

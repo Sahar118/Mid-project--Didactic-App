@@ -1,4 +1,4 @@
-import { async } from '@firebase/util'
+
 import { message, Tabs } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -31,9 +31,7 @@ const Admin = () => {
     }
     useEffect(() => {
         checkIsAdmin();
-        // if (!user || user.role !== "admin") {
-        //     window.location.href = '/';
-        // }
+        //eslint-disable-next-line
     }, [])
     return (
         isAdmin && <div className='bg-white p-1'>

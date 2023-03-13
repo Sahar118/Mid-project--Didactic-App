@@ -1,6 +1,6 @@
 
-import { async } from '@firebase/util';
-import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
+
+import { collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import firestoreDatabase from "../firebaseConfig";
 
 

@@ -1,7 +1,6 @@
 
 import { message, Table } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { render } from 'react-dom'
 import { useDispatch } from 'react-redux'
 import { getAllUsers } from '../../apicalls/users'
 import { showLoader } from '../../redux/loaderSlice'
@@ -29,6 +28,7 @@ const UsersList = () => {
 
     useEffect(() => {
         getData();
+        //eslint-disable-next-line
     }, [])
 
     const columns = [

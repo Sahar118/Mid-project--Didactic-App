@@ -8,19 +8,19 @@ const DiagnosticNav = () => {
                 <div className="header bg-white p-2 flex justify-between items-center">
 
                     <Link to='/new-didactic-diagnosis'>
-                        <h2> אבחון חדש</h2>
+                        <h4> אבחון חדש</h4>
                     </Link>
 
                     <Link to='/diagnosis-archive'>
-                        <h2> היסטורית אבחונים</h2>
+                        <h4> היסטורית אבחונים</h4>
                     </Link>
 
                     <Link to='/calculator-scores'>
-                        <h2>מחשבון ציונים</h2>
+                        <h4>מחשבון ציונים</h4>
                     </Link>
 
                     <Link to='/glossary'>
-                        <h2>מילון מושגים</h2>
+                        <h4>מילון מושגים</h4>
                     </Link>
 
 

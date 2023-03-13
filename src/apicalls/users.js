@@ -1,8 +1,6 @@
 import firestoreDatabase from "../firebaseConfig";
 import { collection, addDoc, getDocs, query, where, getDoc, doc } from 'firebase/firestore'
 import CryptoJS from "crypto-js";
-import { async } from "@firebase/util";
-// import sha256 from 'crypto-js/sha256';
 
 export const CreateUser = async (payload) => {
     try {

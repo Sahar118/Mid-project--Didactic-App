@@ -1,4 +1,4 @@
-import { async } from '@firebase/util'
+
 import { message, Table } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -46,6 +46,7 @@ const DiagnosticList = () => {
 
     useEffect(() => {
         getData();
+        //eslint-disable-next-line
     }, [])
 
     const columns = [
